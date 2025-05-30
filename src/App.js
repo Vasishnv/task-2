@@ -2,6 +2,7 @@ import InputComponent from './components/InputComponent';
 import ListComponent from './components/ListComponent';
 import  'bootstrap/dist/css/bootstrap.css';
 import { createContext, useEffect, useState } from 'react';
+import { Nav,Navbar, NavbarBrand, NavItem, NavLink } from 'react-bootstrap'
 
 
 const tsklstcontext = createContext();
@@ -16,7 +17,25 @@ function App() {
   
 
   return (
-    <div className="mt-5 w-100 d-flex flex-column justify-content-center align-items-center">
+    <div>
+      <div>
+         <Navbar className='bg-light mb-5 '>
+            <NavbarBrand className='  badge rounded-pill shadow-lg bg-primary ms-2 p-2'>
+                To-Do APP
+            </NavbarBrand>
+            <Nav>
+                <NavItem>
+                    <NavLink href='#' className='active'>
+                    Home
+                   </NavLink>
+                </NavItem>
+                
+            </Nav>
+        </Navbar>
+      </div>
+
+
+         <div className="mt-5 w-100 d-flex flex-column justify-content-center align-items-center">
       <tsklstcontext.Provider value={{tsklst,settsklst}}>
         <InputComponent></InputComponent>
         <hr style={styledivider}/>
@@ -24,6 +43,8 @@ function App() {
       </tsklstcontext.Provider>
       
     </div>
+    </div>
+   
   );
 }
 const styledivider = { width: "100vw",

@@ -28,6 +28,7 @@ const InputComponent = () => {
 
   return (
     <div className='mb-4 '>
+      
         <Form onSubmit={(e)=>{handlesubmit(e)}} className='d-flex flex-column justify-content-center align-items-center '>
             <Form.Group className='mb-3'>
                 <Form.Label>Enter task:</Form.Label>

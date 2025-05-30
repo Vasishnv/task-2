@@ -27,9 +27,11 @@ const ListComponent = () => {
     <div className='w-100 d-flex flex-column justify-content-center align-items-center'>
         <div className="bg-success text-white rounded-pill shadow p-4 my-4 px-5 fw-bold text-center fs-4 d-inline-block ">Tasks 📝 </div>
         
-             <Form className="mb-3 w-50">
+             <Form className="mb-3 w-50 d-flex align-content-center justify-items-center">
                  <Form.Control type="text" placeholder="Search tasks..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="text-center p-2"/>
+                 <Button variant='primary' onClick={()=>setSearchTerm("")} className='mx-2 badge '>Clear Search</Button>
             </Form>
+           
             
         <div className='w-100'>
             <Container fluid>
