@@ -5,8 +5,8 @@ import { tsklstcontext } from '../App';
 const InputComponent = () => {
 
   
-  const [tsk,settsk] = useState("");
-  const {tsklst,settsklst} = useContext(tsklstcontext);
+  const [tsk,settsk] = useState([]);
+  const {settsklst} = useContext(tsklstcontext);
   const handlesubmit=(e) =>{
     e.preventDefault();
     if(!tsk || tsk.trim().length === 0){
@@ -14,13 +14,11 @@ const InputComponent = () => {
     }
     else{
       settsklst((prev)=>{
-        const newlst = [...prev,tsk];
+        const newlst = [...prev,{tsk:tsk,completed:false}];
         localStorage.setItem("Tasklst",JSON.stringify(newlst));
-        return newlst;
-          });
-      
-      console.log(...tsklst,"input component")
-      settsk("")
+        return newlst;});
+      settsk("");
+      alert(" Task submitted successfully !");
     }
   }
 
