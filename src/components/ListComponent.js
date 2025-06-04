@@ -40,18 +40,28 @@ const ListComponent = () => {
             <Container fluid>
             <Row>
                 {tsklst.map((lstitem,i)=>(
-                    <Col key={i} className='col-12 col-md-3'>
-                        <Card className={lstitem.completed?"bg-success border-0 bg-opacity-25  m-3 p-2 shadow-sm":"bg-light border-0  m-3 p-2"}>
-                            <Card.Title className='text-center '>Task #{i+1} {lstitem.completed ? <div className='badge bg-success ms-3'>completed</div >:<div className=' ms-3 badge bg-warning'>not completed</div>}</Card.Title>
-                            <div style={{ width: "70%",height: "1px",background: "linear-gradient(to right, rgba(0,0,0,0), #333, rgba(0,0,0,0))",margin: "10px auto",opacity: "0.8"}}></div>
-                            <Card.Body className="d-flex flex-column align-items-center justify-content-between">
-                                <Card.Text className='text-center' style={style}>{lstitem.tsk}</Card.Text>
-                                <div style={{ transform: "scale(1.5)"}}>
-                                    <input type='checkbox' className='form-check-input my-3' checked={lstitem.completed} onChange={()=> handlecheckbox(i)}></input>
+                    <Col key={i} className='col-12 col-md-6 col-lg-4 col-xl-3 '>
+                        <Card style={{}} className={lstitem.completed?"bg-light border-0   m-3 pt-2 shadow":"bg-light border-0  m-3  pt-2 shadow"}>
+                            <Card.Title className='text-center d-flex justify-content-between align-items-center ps-3 pe-4'>
+                                <div className='rounded-pill badge bg-primary'>#{i+1}</div>
+                                    <div className='d-flex justify-content-between align-items-center gap-2'>{lstitem.completed ? <div className='badge bg-success ms-3 rounded-pill'>completed</div >:<div className='rounded-pill ms-3 badge bg-secondary ' style={{}}>not completed</div>}
+                                            <div style={{ transform: "scale(1.3)"}}>
+                                            <input type='checkbox' className='form-check-input my-3' checked={lstitem.completed} onChange={()=> handlecheckbox(i)}></input>
+                                        </div>
+                                
                                 </div>
-                                <Button variant='danger' onClick={()=>handledel(i)}>Delete 🗑️</Button>
-                            </Card.Body>
+                            </Card.Title>
                             
+                            <div style={{ width: "70%",height: "1px",background: "linear-gradient(to right, rgba(0,0,0,0), #333, rgba(0,0,0,0))",margin: " auto",opacity: "0.8"}}></div>
+                            <Card.Body className="d-flex flex-column align-items-center justify-content-between">
+                                <Card.Text className='text-center fs-3 fw-semibold' style={style}>{lstitem.tsk}</Card.Text>
+                                <div className='d-flex '>
+                                   
+                                <Button style={{transform:"scale(.9)"}} variant='dark' onClick={()=>handledel(i)}>🗑️</Button>
+                                </div>
+                                
+                            </Card.Body>
+                            <div className={lstitem.completed ?'w-100 bg-success':"w-100 bg-warning rounded"} style={{height:"3px",opacity:"0.5"}}></div>
                         </Card>
                     </Col>
                 ))}
@@ -60,8 +70,8 @@ const ListComponent = () => {
        
 
 
-        </div>
-         {tsklst.length > 0 ? <Button variant="primary" onClick={handledelall}>Delete All</Button> : null}
+        </div >
+         {tsklst.length > 0 ? <Button variant="dark" className='mt-5' onClick={handledelall}>Delete All</Button> : null}
         
     </div>
   )
